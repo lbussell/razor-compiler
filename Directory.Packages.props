@@ -20,4 +20,9 @@
     <PackageVersion Include="xunit.assert" Version="$(XunitAssertVersion)" />
     <PackageVersion Include="xunit.extensibility.execution" Version="$(XunitExtensibilityExecutionVersion)" />
   </ItemGroup>
+  <!-- When building offline we need to bump the version of System.Reflection.Metadata that CodeAnalysis package depends on to match what the source build tarball expects. -->
+  <ItemGroup Condition="'$(DotNetBuildOffline)' == 'true'">
+    <PackageVersion Include="System.Collections.Immutable" Version="$(SystemCollectionsImmutableVersion)" />
+    <PackageVersion Include="System.Text.Encoding.CodePages" Version="$(SystemTextEncodingCodePagesVersion)" />
+  </ItemGroup>
 </Project>
